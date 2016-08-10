@@ -1,0 +1,19 @@
+SRC=.
+INC=../
+OBJ=.
+BIN=.
+
+INCS=-I$(INC)
+FLAGS=-g -std=c++11 -Wall
+
+SRCS=$(wildcard $(SRC)/*.cpp) $(wildcard $(SRC)../*.cpp)
+OBJS=$(SRCS:$(SRC)/%.cpp=$(OBJ)/%.o)
+
+$(BIN)/out: $(OBJS)
+	g++ $(INCS) $(LIBS) $(FLAGS) $(OBJS) -o UniStreamTests
+
+$(OBJ)/%.o: $(SRC)/%.cpp
+	g++ $(INCS) $(LIBS) $(FLAGS) -c $< -o $@
+
+clean:
+	rm -f *.o UniStreamTests

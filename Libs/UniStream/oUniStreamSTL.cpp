@@ -1,0 +1,24 @@
+#include "oUniStream.h"
+#include "iUniStream.h"
+#include <iostream>
+using namespace MGTools;
+
+///////////////////////////////////////////////////////////////////////////
+void oUniStream::PushSTLBack(unsigned char c)
+{
+    m_buff->push_back(c);
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+void oUniStream::ClearSTLBuffer()
+{
+    m_buff->clear();
+}
+
+///////////////////////////////////////////////////////////////////////////
+size_t oUniStream::GetSTLBufferSize() const
+{
+    return m_buff->size();
+}
+

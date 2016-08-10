@@ -1,0 +1,6 @@
+#include "IBaseComponent.h"
+#include "ComponentsMgrFwd.h"
+#include "ComponentMacroEngine.h"
+#include "../pugixml/pugixml.hpp"
+#include "../UniStream/iUniStream.h"
+#include "../UniStream/oUniStream.h"

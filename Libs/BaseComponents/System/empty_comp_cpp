@@ -1,0 +1,68 @@
+
+// Put your includes above this line
+///////////////////////////////////////////////////////////////////
+/// !!! DO NOT INCLUDE ANY FILES AFTER THIS LINE !!!
+#include "$$CompName$$Component.h"
+///////////////////////////////////////////////////////////////////////////
+using namespace COMPONENT_FACTORY_NAMESPACE;
+#include "System/push_warning_level.h"
+#include "System/stop_unused_var_warning.h"
+IMPLEMENT_COMPONENT_COMMON_METHODS($$COMPNAME$$_COMP_VALUES_ITERATOR_$$RANDOM$$, $$CompName$$, FACTORY_NAMESPACE_STRING)
+#include "System/pop_warning_level.h"
+/// !!! DO NOT INCLUDE ANY FILES HERE !!!
+///////////////////////////////////////////////////////////////////////////
+bool $$CompName$$Component::Load()
+{
+    $$COMPNAME$$_COMP_VALUES_ITERATOR_$$RANDOM$$(COMP_IMPLEMENT_REQ_LOADER, COMP_IMPLEMENT_NOT_REQ_LOADER);
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////
+bool $$CompName$$Component::Load(MGTools::iUniStream& inputStream)
+{
+    COMP_IMPLEMENT_BIN_LOAD($$COMPNAME$$_COMP_VALUES_ITERATOR_$$RANDOM$$, $$CompName$$);
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////
+bool $$CompName$$Component::Serialize(pugi::xml_node& node) const
+{
+    $$COMPNAME$$_COMP_VALUES_ITERATOR_$$RANDOM$$(COMP_IMPLEMENT_REQ_WRITER, COMP_IMPLEMENT_NOT_REQ_WRITER);
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////
+bool $$CompName$$Component::Serialize(MGTools::oUniStream& outStream) const
+{
+    COMP_IMPLEMENT_BIN_SERIALIZE($$COMPNAME$$_COMP_VALUES_ITERATOR_$$RANDOM$$, $$CompName$$);
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////
+$$CompName$$Component::$$CompName$$Component()
+    : COMP_IMPLEMENT_CONSTRUCTOR_VALUES_INIT($$COMPNAME$$_COMP_VALUES_ITERATOR_$$RANDOM$$)
+{
+
+}
+
+///////////////////////////////////////////////////////////////////////////
+$$CompName$$Component::~$$CompName$$Component()
+{
+
+}
+
+///////////////////////////////////////////////////////////////////////////
+MGTools::ComponentsResolveResult
+$$CompName$$Component::Resolve(const $$CompName$$Component& c1, const $$CompName$$Component& c2, const MGTools::MgrMergeInfo& mergeInfo)
+{
+    return MGTools::ComponentsResolveResult::NOT_IMPLEMENTED;
+}
+
+///////////////////////////////////////////////////////////////////////////
+MGTools::IBaseComponentPtr
+$$CompName$$Component::Combine(const $$CompName$$Component& c1, const $$CompName$$Component& c2, const MGTools::MgrMergeInfo& mergeInfo)
+{
+    //$$CompName$$ComponentPtr newCompPtr = $$CompName$$Component::CreateNewInstance();
+
+    return nullptr;
+}
