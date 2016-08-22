@@ -14,11 +14,17 @@ QMAKE_CXXFLAGS += -std=c++11
 QMAKE_LFLAGS += -Wl,--unresolved-symbols=report-all
 QMAKE_CXXFLAGS += -Wno-unused-parameter
 
+CONFIG(release, debug|release) {
+    #This is a release build
+} else {
+    #This is a debug build
+    DEFINES += MG_DEBUG
+}
+
 DEFINES += LIBS_LIBRARY
 
 SOURCES += libs.cpp \
     BaseComponents/System/ComponentsFactory.cpp \
-    BaseComponents/DummyComponent.cpp \
     ComponentsMgr/EmptyFactory/System/ComponentsFactory.cpp \
     ComponentsMgr/ComponentsMgr.cpp \
     ComponentsMgr/HashConstructor.cpp \
@@ -27,8 +33,6 @@ SOURCES += libs.cpp \
     ComponentsMgr/IBaseComponentBasicWriters.cpp \
     ComponentsMgr/IBaseComponentHashes.cpp \
     Events/System/ComponentsFactory.cpp \
-    Events/DummyEventComponent.cpp \
-    Events/FirstEventComponent.cpp \
     FunctionBinder/FunctionBinder/FunctionBinder.cpp \
     FunctionBinder/FunctionCaller/FunctionCaller.cpp \
     FunctionBinder/FunctionConnector/RemoteFunctionConnector.cpp \
@@ -43,7 +47,11 @@ SOURCES += libs.cpp \
     UniStream/oUniStreamOperators.cpp \
     UniStream/oUniStreamSTL.cpp \
     UniStream/UniStreamTests.cpp \
-    XmlParsers/XmlTools.cpp
+    XmlParsers/XmlTools.cpp \
+    Interpolations/InterpolationBase.cpp \
+    Tools/Timer.cpp \
+    Tools/Vector2d.cpp \
+    PathIterators/Bezier.cpp
 
 HEADERS += libs.h\
         libs_global.h \
@@ -104,9 +112,29 @@ HEADERS += libs.h\
     UniStream/UniStream.h \
     UniStream/UniStreamConfig.h \
     UniStream/UniStreamTestUtils.h \
-    XmlParsers/XmlTools.h
+    XmlParsers/XmlTools.h \
+    Tools/DebugTools.h \
+    Interpolations/InterpolationBase.h \
+    BaseComponents/System/empty_comp_cpp \
+    BaseComponents/System/empty_comp_h \
+    ComponentsMgr/EmptyFactory/System/empty_comp_cpp \
+    ComponentsMgr/EmptyFactory/System/empty_comp_h \
+    Events/System/empty_comp_cpp \
+    Events/System/empty_comp_h \
+    Tools/Timer.h \
+    Tools/Vector2d.h \
+    PathIterators/Bezier.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+DISTFILES += \
+    Libs.pro.user.3.3-pre1 \
+    UniStream/MakeUnitTests \
+    ComponentsMgr/CMakeLists.txt \
+    Tools/CMakeLists.txt \
+    BaseComponents/create_component.py \
+    ComponentsMgr/EmptyFactory/create_component.py \
+    Events/create_component.py

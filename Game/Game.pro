@@ -8,8 +8,20 @@ QMAKE_CXXFLAGS += -Wno-unused-parameter
 LIBS += -L/usr/local/lib -lSDL2 -ldl -lpthread
 SOURCES += main.cpp
 
+
+CONFIG(release, debug|release) {
+    #This is a release build
+} else {
+    #This is a debug build
+    DEFINES += MG_DEBUG
+}
+
+
+
 include(deployment.pri)
 qtcAddDeployment()
+
+
 
 HEADERS += \
     dummy.h
